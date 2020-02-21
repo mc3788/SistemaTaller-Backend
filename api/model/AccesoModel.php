@@ -18,6 +18,6 @@ class AccesoModel extends Model
 
 	public function opcion() {
 		require_once 'api/model/OpcionModel.php';
-		return $this->hasOne( 'OpcionModel', 'id' )->select(['id','descripcion']);
+		return $this->hasOne( 'OpcionModel', 'id', 'idOpcion' )->select(['id','descripcion']);
 	}
 }
