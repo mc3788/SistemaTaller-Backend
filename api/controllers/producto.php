@@ -15,7 +15,7 @@ class producto extends Controller
 			{
 				$data = $this->getData($modelName, $id, null);
 				if ( isset( $data ) ){
-					$data->load(['acceso','opcion']);
+					$data->load(['proveedor','marca']);
 				}
 				ResponseAdministrator::responseData( $data);
 			} catch( Exception $exception ){
