@@ -2,7 +2,7 @@
 
 
 class cierreCaja extends Controller
-{
+{ 
 	public function main( $id = '' ) {
 		require_once ("api/core/ResponseAdministrator.php");
 		require_once ("api/core/Auth.php");
@@ -112,6 +112,24 @@ class cierreCaja extends Controller
 			ResponseAdministrator::responseSuccess();
 		} else {
 			ResponseAdministrator::responseBadRequest();
+		}
+	}
+
+	public function gastosAbonos( $anio ){
+		require_once ("api/core/ResponseAdministrator.php");
+
+		try
+		{
+			
+			$am = $this->model( 'CierreCajaModel' );
+
+			$cc = $am::select('montoCredito','montoDebito')
+				->where('azo', '=', $anio)->get();
+
+			ResponseAdministrator::responseData( $cc );
+
+		} catch ( Exception $exception ) {
+				ResponseAdministrator::responseError();
 		}
 	}
 
